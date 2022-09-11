@@ -48,11 +48,13 @@ class ArticleRepository extends ServiceEntityRepository
 //            ->andWhere('a.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
+//            ->setMaxResults(10) 
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
+
+
 
 //    public function findOneBySomeField($value): ?Article
 //    {
@@ -63,4 +65,18 @@ class ArticleRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+   /**
+    * @return Article[] Returns an array of Article objects
+    */
+   public function findBySearch(string $text): array
+   {
+       return $this->createQueryBuilder('a')
+           ->andWhere('a.content LIKE :val')
+           ->setParameter('val', "%$text%") 
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 }
