@@ -31,12 +31,13 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $category;
 

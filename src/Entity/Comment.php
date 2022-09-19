@@ -29,13 +29,13 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $article;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $user;
 
