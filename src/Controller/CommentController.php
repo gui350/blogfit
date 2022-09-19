@@ -30,6 +30,8 @@ class CommentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // récupération de l'utilisateur connecté et $recette->setAuthor()
+            // $comment->setAuthor($security->getUser());
             $commentRepository->add($comment, true);
 
             return $this->redirectToRoute('app_article_show', [
